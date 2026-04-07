@@ -1,0 +1,3 @@
+cd ~/luckfox_pico_rknn_example
+export LUCKFOX_SDK_PATH=~/luckfox_toolchain
+./build.sh TARGET_SOC=rv1106
