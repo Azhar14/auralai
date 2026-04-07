@@ -1,4 +1,4 @@
-# **💸 Proyek Deteksi Uang Rupiah dengan Luckfox Pico & DFPlayer**
+# **Deteksi Uang Rupiah untuk mempermudah tunanetra dengan Luckfox Pico & DFPlayer**
 
 Dokumentasi ini merangkum langkah-langkah, cara kerja, dan struktur dari sistem deteksi nominal uang Rupiah menggunakan AI (YOLOv5) yang di-deploy ke dalam *board* Luckfox Pico (RV1106) dan dihubungkan ke modul suara DFPlayer Mini.
 
