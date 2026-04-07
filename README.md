@@ -92,20 +92,7 @@ cd \~/luckfox\_pico\_rknn\_example
 3. Masuk ke *shell* Luckfox (adb shell), beri izin jalan (chmod \+x), dan eksekusi:  
    ./luckfox\_pico\_yolov5 model/uang.rknn
 
-## **4\. ⚠️ Status Terkini & Analisis Troubleshooting**
-
-**Gejala Terakhir:** Muncul *error* Segmentation fault (core dumped) persis setelah kamera mendeteksi port /dev/video11 dan memunculkan notifikasi ISP ON.
-
-**Analisis Masalah:**
-
-* Kesalahan bukan pada skrip kamera OpenCV atau kode Audio UART (karena kompilasi sukses dan berhasil mengeksekusi inisialisasi).  
-* Analisis matematis menunjuk pada ketidakcocokan antara **Dimensi Tensor RKNN** dengan **Fungsi Post-Process C++**.  
-* Log menunjukkan output model memotong *grid* dengan panjang **25200** dan kedalaman **12** (5 \+ 7 kelas). Jika model .rknn yang dimasukkan memiliki arsitektur yang sedikit berbeda dari *YOLOv5 standar pabrik* (misal: anchor box yang berbeda, atau struktur YOLOv8 yang salah dikenali sebagai YOLOv5), modul postprocess.cc di C++ akan membaca blok memori yang salah (*Out of Bounds*), menyebabkan OS Linux membunuh paksa program tersebut (Segmentation Fault).
-
-**Langkah Perbaikan Selanjutnya (Next Action):**
-
-Melakukan *rollback test* dengan menjalankan program saat ini menggunakan model yolov5.rknn bawaan pabrik. Jika program berjalan mulus tanpa SegFault, dapat dipastikan file uang.rknn harus diperiksa ulang tahap konversi/pelatihannya (Anchor Box / Tipe YOLO).
-
+Sumber: 
 [https://github.com/LuckfoxTECH/luckfox\_pico\_rknn\_example](https://github.com/LuckfoxTECH/luckfox_pico_rknn_example)
 
 [https://universe.roboflow.com/project/indonesia-rupiah-detection/dataset/3](https://universe.roboflow.com/project/indonesia-rupiah-detection/dataset/3)
